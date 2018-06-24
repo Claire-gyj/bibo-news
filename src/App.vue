@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+    <!--  通过观察路由路径的变化来解决组件不更新的问题 -->
   </div>
 </template>
 
@@ -11,13 +13,6 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus">
+
 </style>

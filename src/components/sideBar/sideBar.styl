@@ -1,0 +1,81 @@
+.side_bar
+  position fixed
+  left 0
+  top 0
+  width 225px
+  height 100%
+  color #a0a0a0
+  background-color #1f1f1f
+  box-shadow 4px 0 10px #222
+  z-index 20
+  .head_wrapper
+    padding 30px 39px 10px 15px
+    .user
+      margin-bottom 16px
+      .user_avatar
+        display block
+        width 35px
+        height 35px
+        border-radius 50%
+        background-color #a0a0a0
+        float left
+      .user_name
+        margin-left 51px
+        display block
+        height 35px
+        font-size 15px
+        line-height 35px
+    .user_info
+      display flex
+      font-size 20px
+      color #a0a0a0
+      .info
+        flex 1
+        margin-right 40px
+        &:last-child
+          margin-right 0
+      .icon
+        display block
+        margin 0 auto 4px
+        width 20px
+        height 20px
+      .desc
+        display block
+        font-size 10px
+        line-height 20px
+        text-align center
+  .menu_wrapper
+    .home_page
+      box-sizing border-box
+      padding 17px 39px 18px 15px
+      height 51px
+      position relative
+      background-color #191919
+      .icon-home
+        margin-right 16px
+        font-size 16px
+        line-height 16px
+        color #a0a0a0
+      .desc
+        width 50px
+        font-size 16px
+        line-height 16px
+      .status
+        position absolute
+        font-size 20px
+        line-height 20px
+        right 39px
+    .theme_wrapper
+      width 100%
+      height 435px
+      overflow hidden
+      .theme
+        padding 17px 39px 18px 15px
+        position relative
+        &:active &:hover
+          background-color #191919
+        .status
+          position absolute
+          font-size 20px
+          line-height 20px
+          right 39px

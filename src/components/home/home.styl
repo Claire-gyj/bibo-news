@@ -1,0 +1,81 @@
+.home
+  display flex
+  .all_news
+    flex 1
+    .bar
+      width 100%
+      height 58px
+      position fixed
+      top 0
+      z-index 15
+      box-sizing border-box
+      padding-top 32px
+      display flex
+      background-color #00a2ed
+      .icon-menu
+        position absolute
+        left 13px
+        font-size 18px
+        color #fff
+        cursor pointer
+      .hot
+        display block
+        width 100%
+        text-align center
+        font-size 18px
+        color #fff
+        line-height 18px
+    .head_wrapper
+      width 100%
+      height 220px
+      background-color rgb(238, 238, 238)
+    .content_wrapper
+      // height 447px
+      background-color #fff
+      .list
+        .news_item
+          padding 16px 15px 0 16px
+          display flex
+          box-sizing border-box
+          width 100%
+          height 91px
+          border-bottom 1px solid #f6f6f6
+          .title
+            flex 1
+            margin 0 16px 0 0 !important
+            font-size 16px
+            line-height 20px
+            color #333
+          .pic
+            width 75px
+            height 60px
+            overflow hidden
+            background-color #b8b8b8
+            img
+              width auto
+              height auto
+              max-width 100%
+      .before
+        .news_date
+          width 100%
+          height 38px
+          font-size 15px
+          line-height 38px
+          text-align center
+          color #fff
+          background-color #028fd6
+    .load
+        width 100%
+        height 36px
+        text-align center
+        font-size 14px
+        line-height 36px
+        color #e6e6e6
+  .mask
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 16
+    background-color rgba(33, 33, 43, 0.8)
