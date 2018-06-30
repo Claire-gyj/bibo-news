@@ -5,33 +5,37 @@
         <span class="icon-menu" @click="toggleMenu()"></span>
         <span class="hot">今日热闻</span>
       </div>
-        <div class="head_wrapper">
-          <div class="carousel">
-          </div>
+      <el-carousel height="220px" class="stories">
+        <el-carousel-item v-for="(story, index) in today_news.top_stories"
+                          :key="index"
+                          class="story">
+          <img :src="story.image" class="image">
+          <span class="title">{{ story.title}}</span>
+        </el-carousel-item>
+      </el-carousel>
+      <div class="content_wrapper">
+        <div class="today">
+          <newsList :newsList="getTodayStories"></newsList>
         </div>
-        <div class="content_wrapper">
-          <div class="today">
-            <newsList :newsList="getTodayStories"></newsList>
-          </div>
-          <div class="before" v-if="past_news.length > 0">
-            <ul v-for="(news, index) in past_news"
-                :key="index"
-                class="list">
-              <div class="news_date">{{ getNewsDate }}</div>
-              <router-link :to="{name: 'content', params: {id: news.id}}"
-                          tag="li"
-                          class="news_item"
-                          v-for="item in news.stories"
-                          :key="item.id"
-                          @click="clearContentInfo()">
-                <p class="title">{{ item.title }}</p>
-                <div class="pic">
-                  <img :src="item.images">
-                </div>
-              </router-link>
-            </ul>
-          </div>
+        <div class="before" v-if="past_news.length > 0">
+          <ul v-for="(news, index) in past_news"
+              :key="index"
+              class="list">
+            <div class="news_date">{{ getNewsDate }}</div>
+            <router-link :to="{name: 'content', params: {id: news.id}}"
+                        tag="li"
+                        class="news_item"
+                        v-for="item in news.stories"
+                        :key="item.id"
+                        @click="clearContentInfo()">
+              <p class="title">{{ item.title }}</p>
+              <div class="pic">
+                <img :src="item.images">
+              </div>
+            </router-link>
+          </ul>
         </div>
+      </div>
       <div class="load" @click="load()">点击加载</div>
     </div>
     <div v-if="showSide">

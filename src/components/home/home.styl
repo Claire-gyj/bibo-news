@@ -2,6 +2,7 @@
   display flex
   .all_news
     flex 1
+    overflow hidden
     .bar
       width 100%
       height 58px
@@ -25,10 +26,31 @@
         font-size 18px
         color #fff
         line-height 18px
-    .head_wrapper
-      width 100%
-      height 220px
-      background-color rgb(238, 238, 238)
+    .stories
+      overflow hidden
+      .story
+        width 100%
+        height 220px
+        .image
+          max-width 100%
+          position relative
+          top -40px
+        .title
+          margin 16px
+          display block
+          position absolute
+          bottom 10px
+          font-size 18px
+          line-height 22px
+          color #fff
+      .el-carousel__indicators
+        width 180px
+        display flex
+        justify-content space-between
+        .el-carousel__indicator
+          flex-basis 20px
+          // margin 0 4px 0
+          // width 20px
     .content_wrapper
       background-color #fff
       .list
