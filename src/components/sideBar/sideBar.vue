@@ -55,17 +55,10 @@
 </template>
 
 <script>
-import './sideBar.styl'
-import BScroll from 'better-scroll'
-import { mapMutations, mapActions, mapGetters } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   props: ['themes'],
-  created () {
-    this.$nextTick(() => {
-      this._initScroll()
-    })
-  },
 
   computed: {
     ...mapGetters([
@@ -74,19 +67,14 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      'THEME_LIST'
-    ]),
-
     ...mapMutations([
       'beSubscribed'
-    ]),
-
-    _initScroll () {
-      this.themeScroll = new BScroll(this.$refs.themeWrapper, {
-        click: true
-      })
-    }
+    ])
   }
 }
 </script>
+
+<style lang="stylus">
+@import './sideBar.styl'
+
+</style>

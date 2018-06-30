@@ -70,9 +70,9 @@ export default {
   },
 
   mounted () {
-    this.NEWS_INFO(this.$route.params.id)
-    this.LONG_COMMENTS(this.$route.params.id)
-    this.SHORT_COMMENTS(this.$route.params.id)
+    this.GET_NEWS_INFO(this.$route.params.id)
+    this.GET_LONG_COMMENTS(this.$route.params.id)
+    this.GET_SHORT_COMMENTS(this.$route.params.id)
   },
 
   computed: {
@@ -105,14 +105,13 @@ export default {
 
   methods: {
     ...mapActions([
-      'NEWS_INFO',
-      'LONG_COMMENTS',
-      'SHORT_COMMENTS'
+      'GET_NEWS_INFO',
+      'GET_LONG_COMMENTS',
+      'GET_SHORT_COMMENTS'
     ]),
 
     goBack () {
-      // window.history.back()
-      this.$router.push({path: '/content/' + this.$route.params.id})
+      window.history.back()
     },
 
     toggleShortComments () {

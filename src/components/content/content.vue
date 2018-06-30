@@ -50,8 +50,8 @@ export default {
   },
 
   mounted () {
-    this.NEWS_CONTENT(this.$route.params.id)
-    this.NEWS_INFO(this.$route.params.id)
+    this.GET_NEWS_CONTENT(this.$route.params.id)
+    this.GET_NEWS_INFO(this.$route.params.id)
   },
 
   computed: {
@@ -79,12 +79,13 @@ export default {
 
   methods: {
     ...mapActions([
-      'NEWS_CONTENT',
-      'NEWS_INFO'
+      'GET_NEWS_CONTENT',
+      'GET_NEWS_INFO'
     ]),
 
     goBack () {
       window.history.back()
+      this.$store.commit('CLEAR_CONTENT_INFO')
     },
 
     add () {

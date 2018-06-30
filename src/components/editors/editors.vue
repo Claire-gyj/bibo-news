@@ -24,7 +24,6 @@ export default {
 
   methods: {
     goBack () {
-      console.log(1)
       this.$emit('hideEditors')
     }
   }

@@ -42,8 +42,7 @@ export default {
   },
 
   mounted () {
-    this.THEME_CONTENT(this.$route.params.id)
-    console.log(this.$route.params.themes.subscribed)
+    this.GET_THEME_CONTENT(this.$route.params.id)
   },
 
   computed: {
@@ -62,8 +61,7 @@ export default {
 
   methods: {
     ...mapActions([
-      'THEME_CONTENT',
-      'THEME_LIST'
+      'GET_THEME_CONTENT'
     ]),
 
     ...mapMutations([

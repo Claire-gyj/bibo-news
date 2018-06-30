@@ -5,7 +5,7 @@ const state = {
   news_info: null,
   long_comments: null,
   short_comment: null,
-  themes: null,
+  themes: [],
   theme_content: null
 }
 

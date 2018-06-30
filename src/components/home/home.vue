@@ -11,18 +11,19 @@
         </div>
         <div class="content_wrapper">
           <div class="today">
-            <newsList :newsList="this.getTodayStories"></newsList>
+            <newsList :newsList="getTodayStories"></newsList>
           </div>
-          <div class="before" v-if="this.past_news.length > 0">
-            <ul v-for="(item, index) in this.past_news"
+          <div class="before" v-if="past_news.length > 0">
+            <ul v-for="(news, index) in past_news"
                 :key="index"
                 class="list">
               <div class="news_date">{{ getNewsDate }}</div>
-              <router-link :to="{name: 'content', params: {id: item.id}}"
+              <router-link :to="{name: 'content', params: {id: news.id}}"
                           tag="li"
                           class="news_item"
-                          v-for="item in item.stories"
-                          :key="item.id">
+                          v-for="item in news.stories"
+                          :key="item.id"
+                          @click="clearContentInfo()">
                 <p class="title">{{ item.title }}</p>
                 <div class="pic">
                   <img :src="item.images">
@@ -35,16 +36,17 @@
     </div>
     <div v-if="showSide">
       <div class="mask" @click="toggleMenu()"></div>
-      <sideBar :themes="themes"></sideBar>
+      <keep-alive>
+        <sideBar :themes="themes"></sideBar>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 import sideBar from '../sideBar/sideBar'
 import newsList from '../newsList/newsList'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import './home.styl'
 
 export default {
@@ -55,8 +57,8 @@ export default {
   },
 
   mounted () {
-    this.TODAY_NEWS()
-    this.THEME_LIST()
+    this.GET_TODAY_NEWS()
+    this.GET_THEME_LIST()
   },
 
   computed: {
@@ -79,10 +81,13 @@ export default {
   },
 
   methods: {
+    ...mapMutations([
+      'CLEAR_CONTENT_INFO'
+    ]),
     ...mapActions([
-      'TODAY_NEWS',
-      'PAST_NEWS',
-      'THEME_LIST'
+      'GET_TODAY_NEWS',
+      'GET_PAST_NEWS',
+      'GET_THEME_LIST'
     ]),
 
     toggleMenu () {
@@ -96,12 +101,6 @@ export default {
       } else {
         this.PAST_NEWS(this.past_news[length - 1].date)
       }
-    },
-
-    _initScroll () {
-      this.contentScroll = new BScroll(this.$refs.contentWrapper, {
-        click: true
-      })
     }
   },
 

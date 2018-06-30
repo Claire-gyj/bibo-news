@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view/>
-    </keep-alive>
+    <router-view/>
     <!--  通过观察路由路径的变化来解决组件不更新的问题 -->
   </div>
 </template>
