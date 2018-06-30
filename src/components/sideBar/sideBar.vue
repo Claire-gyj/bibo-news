@@ -1,5 +1,6 @@
 <template>
   <div class="side_bar">
+    <div class="wrapper">
     <div class="head_wrapper">
       <div class="user">
         <span class="user_avatar"></span>
@@ -48,6 +49,7 @@
     <div class="foot_wrapper">
       <div class=""></div>
       <div class=""></div>
+    </div>
     </div>
   </div>
 </template>

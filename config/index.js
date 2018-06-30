@@ -38,7 +38,7 @@ module.exports = {
     showEslintErrorsInOverlay: false,
 
     /**
-     * Source Maps
+     * Source Mapsk
      */
 
     // https://webpack.js.org/configuration/devtool/#development
