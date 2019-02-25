@@ -38,6 +38,7 @@ const actions = {
       })
       .catch(e => {
         console.log('获取新闻内容失败' + e)
+        // console.log(res.da)
       })
   },
 

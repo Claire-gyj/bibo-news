@@ -17,17 +17,16 @@
         <div class="today">
           <newsList :newsList="getTodayStories"></newsList>
         </div>
-        <div class="before" v-if="past_news.length > 0">
-          <ul v-for="(news, index) in past_news"
-              :key="index"
+        <div class="before" v-for="(news, index) in past_news" :key="index">
+          <ul v-if="news.stories"
               class="list">
             <div class="news_date">{{ getNewsDate }}</div>
-            <router-link :to="{name: 'content', params: {id: news.id}}"
+            <router-link v-for="item in news.stories"
+                        :to="{name: 'content', params: {id: item.id}}"
                         tag="li"
                         class="news_item"
-                        v-for="item in news.stories"
                         :key="item.id"
-                        @click="clearContentInfo()">
+                        >
               <p class="title">{{ item.title }}</p>
               <div class="pic">
                 <img :src="item.images">
@@ -96,14 +95,15 @@ export default {
 
     toggleMenu () {
       this.showSide = !this.showSide
+      console.log(this.themes.others)
     },
 
     load () {
       let length = this.past_news.length
       if (length <= 0) {
-        this.PAST_NEWS(this.today_news.date)
+        this.GET_PAST_NEWS(this.today_news.date)
       } else {
-        this.PAST_NEWS(this.past_news[length - 1].date)
+        this.GET_PAST_NEWS(this.past_news[length - 1].date)
       }
     }
   },

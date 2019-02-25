@@ -1,10 +1,10 @@
 <template>
   <ul class="list" v-if="newsList">
     <router-link v-for="item in newsList"
-                 :to="{name: 'content', params: {id: item.id}}"
-                 tag="li"
-                 class="news_item"
-                 :key="item.id">
+                  :to="{name: 'content', params: {id: item.id}}"
+                  tag="li"
+                  class="news_item"
+                  :key="item.id">
       <p class="title">{{ item.title }}</p>
       <div class="pic" v-if="item.images">
         <img :src="item.images">

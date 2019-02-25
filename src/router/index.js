@@ -24,7 +24,7 @@ export default new Router({
       component: content
     },
     {
-      path: '/content/comments/:id',
+      path: '/content/:id/comments',
       name: 'comments',
       component: comments
     },
