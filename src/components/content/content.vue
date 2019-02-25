@@ -1,6 +1,6 @@
 <template>
   <div class="content_wrapper"
-       v-if="this.news_content && this.news_info">
+        v-if="this.news_content && this.news_info">
     <div class="head_wrapper" v-if="this.news_content.image">
       <div class="head">
         <img :src="this.news_content.image" class="bg" v-if="this.news_content.image">
@@ -19,15 +19,16 @@
       <div class="wrapper popularity">
         <span class="icon icon-like"></span>
         <span class="popularity_count"
-             :class="{add: togglePopular}"
-             @click="add()">
-             {{ getPopularity }}
+              :class="{add: togglePopular}"
+              @click="add()">
+              {{ getPopularity }}
         </span>
       </div>
       <div class="wrapper">
         <span class="icon icon-share"></span>
       </div>
       <router-link
+        v-if="this.$route.params.id"
         :to="{name: 'comments', params:{id: this.$route.params.id}}"
         class="wrapper comment"
         tag="div">

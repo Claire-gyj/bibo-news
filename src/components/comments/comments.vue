@@ -1,11 +1,38 @@
 <template>
-  <div class="comments_wrapper">
-    <div class="long_comments" v-if="this.news_info && this.long_comments">
-      <div v-if="this.long_comments > 0">
-        <div class="count">{{ getLongCommentsCount }} 条长评</div>
-        <ul>
+  <div class="wrapper">
+    <div class="comments_wrapper">
+      <div class="long_comments" v-if="this.news_info && this.long_comments">
+        <div class="no_comment_wrapper" v-if="this.long_comments.length <= 0">
+          <div class="no_comment">
+            <span class="icon-no-comment"></span>
+            <span class="desc">深度长评虚位以待</span>
+          </div>
+        </div>
+        <div v-else>
+          <div class="count">{{ getLongCommentsCount }} 条长评</div>
+          <ul>
+            <li class="content_wrapper"
+                v-for="item in getLongComments"
+                :key="item.id">
+              <div class="avatar_wrapper">
+                <img :src="item.avatar" alt="avatar" class="avatar">
+              </div>
+              <div class="info">
+                <span class="author">{{ item.author }}</span>
+                <div class="content">{{ item.content }}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="short_comments" v-if="this.news_info && this.short_comments">
+        <div class="count short">
+          <span>{{ getShortCommentsCount }} 条短评</span>
+          <span class="icon-show" @click="toggleShortComments()"></span>
+        </div>
+        <ul v-show="showShortComments">
           <li class="content_wrapper"
-              v-for="item in getLongComments"
+              v-for="item in getShortComments"
               :key="item.id">
             <div class="avatar_wrapper">
               <img :src="item.avatar" alt="avatar" class="avatar">
@@ -17,31 +44,6 @@
           </li>
         </ul>
       </div>
-      <div class="no_comment_wrapper" v-else>
-        <div class="no_comment">
-          <span class="icon-no-comment"></span>
-          <span class="desc">深度长评虚位以待</span>
-        </div>
-      </div>
-    </div>
-    <div class="short_comments" v-if="this.news_info && this.short_comments">
-      <div class="count short">
-        <span>{{ getShortCommentsCount }} 条短评</span>
-        <span class="icon-show" @click="toggleShortComments()"></span>
-      </div>
-      <ul v-show="showShortComments">
-        <li class="content_wrapper"
-            v-for="item in getShortComments"
-            :key="item.id">
-          <div class="avatar_wrapper">
-            <img :src="item.avatar" alt="avatar" class="avatar">
-          </div>
-          <div class="info">
-            <span class="author">{{ item.author }}</span>
-            <div class="content">{{ item.content }}</div>
-          </div>
-        </li>
-      </ul>
     </div>
     <div class="comments_all_count" v-if="this.news_info">{{ getAllCount }} 条点评</div>
     <div class="write_comment">
